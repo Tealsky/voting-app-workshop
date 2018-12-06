@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: result
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicaCount.result }}
+  template:
+    metadata:
+      labels:
+        app: result
+    spec:
+      containers:
+      - image: dockersamples/examplevotingapp_result:before
+        name: result
